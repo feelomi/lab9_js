@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Замовлення меблів</title>
+</head>
+<body>
+    <h2>Замовлення меблів</h2>
+    <form action="order.php" method="post" onsubmit="return validateForm()">
+      <label for="furniture">Виберіть виріб:</label>
+      <select id="furniture" name="furniture">
+         <option value="Шафа">Шафа</option>
+         <option value="Стіл">Стіл</option>
+         <option value="Сервант">Сервант</option>
+      </select>
+      <br>
+
+      <label for="material">Виберіть матеріал:</label>
+      <select id="material" name="material">
+         <option value="Дуб">Дуб</option>
+         <option value="Горіх">Горіх</option>
+         <option value="Бук">Бук</option>
+      </select>
+      <br>
+
+      <label for="quantity">Введіть кількість:</label>
+      <input type="number" id="quantity" name="quantity" min="1">
+      <br>
+
+      <input type="submit" value="Замовити">
+   </form>
+
+    <script>
+      function validateForm(){
+         var furniture = document.getElementById("furniture").value;
+         var material = document.getElementById("material").value;
+         var quantity = document.getElementById("quantity").value;
+
+         if(furniture == "" || material == "" || quantity == ""){
+            alert("Будь ласка, заповніть всі поля");
+            return false;
+         }
+      }
+    </script>
+</body>
+</html>

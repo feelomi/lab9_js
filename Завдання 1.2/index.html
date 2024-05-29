@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Обчислення тригонометричних функцій</title>
+</head>
+<body>
+   <h2>Тригонометричні функції</h2>
+   <h3>Кут повинен бути більшим 0 й меншим 90 градусів</h3>
+   <form id="trigForm" onsubmit="return calculateTrig()">
+      <label for="angle">Кут в градусах:</label>
+      <input type="number" id="angle" name="angle" min="0" max="90" required>
+      <br>
+      <label for="function">Функція ......</label>
+      <select id="function" name="function">
+         <option value="sin">Синус</option>
+         <option value="cos">Косинус</option>
+         <option value="tan">Тангенс</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Обчислити">
+   </form>
+   <div id="result"></div>
+
+   <script>
+      function calculateTrig(){
+         var angle = parseFloat(document.getElementById("angle").value);
+         var func = document.getElementById("function").value;
+         var resultElement = document.getElementById("result");
+
+         // Переведення градусів в радіани
+         var radians = angle * Math.PI / 180;
+
+         var expression = "Math." + func + "(" + radians + ")";
+         var result = eval(expression);
+         result = result.toFixed(2);
+
+         resultElement.innerHTML = "<p>" + func + "(" + angle + "°) = " + result + "</p>";
+
+         return false;
+      }
+   </script>
+</body>
+</html>
